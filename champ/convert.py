@@ -15,7 +15,7 @@ def load_channel_names(tifs):
     for filename in tifs:
         tif = tifffile.TiffFile(filename)
         raw_channel_names = tif.micromanager_metadata['summary']['ChNames']
-        if type(raw_channel_names) in (str, unicode):
+        if type(raw_channel_names) is str:
             channel_names = [raw_channel_names]
         else:
             channel_names = raw_channel_names
