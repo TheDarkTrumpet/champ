@@ -1,11 +1,10 @@
 import logging
 import time
 from copy import deepcopy
-from itertools import izip
 import numpy as np
 from champ import stats, clusters
-from fastqtilercs import FastqTileRCs
-from imagedata import ImageData
+from champ.fastqtilercs import FastqTileRCs
+from champ.imagedata import ImageData
 from scipy.spatial import KDTree
 
 log = logging.getLogger(__name__)
@@ -354,6 +353,6 @@ class FastqImageAligner(object):
                 # hack because I don't understand why tiles aren't getting rotations
                 # not having rotations implies they aren't getting aligned at all, which is very bad
                 continue
-            for read_name, pt in izip(tile.read_names, tile.aligned_rcs):
+            for read_name, pt in zip(tile.read_names, tile.aligned_rcs):
                 if 0 <= pt[0] < im_shape[0] and 0 <= pt[1] < im_shape[1]:
                     yield '%s\t%f\t%f\n' % (read_name, pt[0], pt[1])
