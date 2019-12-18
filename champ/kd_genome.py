@@ -1,6 +1,6 @@
 import sys
 import pysam
-import misc
+from champ import misc
 from champ.kd import IAKdData
 from scipy.optimize import curve_fit
 from collections import defaultdict

@@ -157,7 +157,7 @@ class TifsPerConcentration(BaseTifStack):
                 # if the images are larger than 512x512, we need to subdivide them
                 subrows, subcolumns = range(height / 512), range(width / 512)
                 # Find channel names and assert unique
-                if type(summary['ChNames']) in (str, unicode):
+                if type(summary['ChNames']) in (str):
                     summary['ChNames'] = [sanitize_name(summary['ChNames'])]
                 channel_names = [sanitize_name(name) for name in summary['ChNames']]
                 summary['Channels'] = int(summary['Channels'])

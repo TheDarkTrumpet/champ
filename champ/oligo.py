@@ -78,7 +78,7 @@ def infer_reads(oligo_seq, phiX_genome_fpath, phiX_mapping_dir, out_fpath):
     stats = Counter()
     fwd_sites, rc_sites = find_oligo_sites(oligo_seq, phiX_genome_fpath)
     # fwd_sites, rc_sites = rc_sites, fwd_sites
-    print '{} forward site(s), {} Reverse complement site(s)'.format(len(fwd_sites), len(rc_sites))
+    print("{} forward site(s), {} Reverse complement site(s)").format(len(fwd_sites), len(rc_sites))
 
     for bam_fpath in bam_fpaths:
         for read in pysam.Samfile(bam_fpath):
@@ -123,10 +123,10 @@ def infer_reads(oligo_seq, phiX_genome_fpath, phiX_mapping_dir, out_fpath):
                         out_read_names.add(read.qname)
                         unpaired_read_names.add(read.qname)
 
-    print 'Properly paired seqs found: {}'.format(len(properly_paired_read_names))
-    print 'Unpaired reads found: {}'.format(len(unpaired_read_names))
+    print("Properly paired seqs found: {}").format(len(properly_paired_read_names))
+    print("Unpaired reads found: {}").format(len(unpaired_read_names))
     for stat, count in sorted(stats.items()):
-        print '{} reads total: {}'.format(stat, count)
+        print("{} reads total: {}").format(stat, count)
 
     with open(out_fpath, 'w') as out:
         out.write('\n'.join(out_read_names))

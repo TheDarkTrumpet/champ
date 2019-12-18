@@ -7,13 +7,13 @@ import yaml
 
 
 def get_max_edit_dist(target):
-    dists = [editdistance.eval(target, rand_seq(target)) for _ in xrange(1000)]
+    dists = [editdistance.eval(target, rand_seq(target)) for _ in range(1000)]
     return min(10, np.percentile(dists, 0.5))
 
 
 def rand_seq(target):
     seq_len = int(random.normalvariate(len(target), len(target) / 10))
-    return ''.join(random.choice('ACGT') for _ in xrange(seq_len))
+    return ''.join(random.choice('ACGT') for _ in range(seq_len))
 
 
 def get_target_reads(target, reads_by_seq_fpath, out_fpath):
