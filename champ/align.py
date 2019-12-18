@@ -42,7 +42,8 @@ def run(cluster_strategy, rotation_adjustment, h5_filenames, path_info, snr, min
     log.debug("Done aligning!")
 
 
-def run_data_channel(cluster_strategy, h5_filenames, channel_name, path_info, alignment_tile_data, all_tile_data, metadata, clargs, process_limit):
+def run_data_channel(cluster_strategy, h5_filenames, channel_name, path_info, alignment_tile_data, all_tile_data,
+                     metadata, clargs, process_limit):
     image_count = count_images(h5_filenames, channel_name)
     num_processes, chunksize = calculate_process_count(image_count)
     if process_limit > 0:
@@ -198,7 +199,7 @@ def load_aligned_stats_files(h5_filenames, alignment_channel, path_info):
 
 
 def process_data_image(cluster_strategy, path_info, all_tile_data, um_per_pixel, make_pdfs, channel,
-                       fastq_image_aligner, min_hits, (h5_filename, base_name, stats_filepath, row, column)):
+                       fastq_image_aligner, min_hits, h5_filename, base_name, stats_filepath, row, column):
     image = load_image(h5_filename, channel, row, column)
     alignment_stats_file_path = os.path.join(path_info.results_directory, base_name, stats_filepath)
     data_stats_file_path = os.path.join(path_info.results_directory, base_name, '{}_stats.txt'.format(image.index))
