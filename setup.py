@@ -30,7 +30,7 @@ if __name__ == '__main__':
                      'Intended Audience :: Science/Research',
                      'License :: Freely Distributable',
                      'Operating System :: POSIX :: Linux',
-                     'Programming Language :: Python :: 2.7',
+                     'Programming Language :: Python :: 3.7',
                      'Topic :: Scientific/Engineering :: Bio-Informatics',
                      ]
     )

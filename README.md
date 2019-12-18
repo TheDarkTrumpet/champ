@@ -116,3 +116,14 @@ found that 1.4 to be ideal under most scenarios.
 Analyses of sequence specificity are performed using the Jupyter notebooks provided in the `notebooks` directory. The 
 intended workflow is to copy them from this repo into each new experiment directory, edit the few variables as needed
 at the top of each notebook, and run them.
+
+
+
+
+## To add later
+
+Build the cyton extensions first by doing:
+
+```python
+python setup.py build_ext --inplace
+````
