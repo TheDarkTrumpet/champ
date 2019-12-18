@@ -1,6 +1,6 @@
 from copy import deepcopy
 import numpy as np
-import champ.misc
+from champ import misc
 import logging
 from scipy import ndimage
 

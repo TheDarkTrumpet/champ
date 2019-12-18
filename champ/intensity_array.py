@@ -55,7 +55,7 @@ class IntensityArray(object):
                 line = next(f)
                 self.read_names.append(line.strip().split('\t'))
                 self.intensity_lolol.append([])
-                for _ in xrange(len(self.course_trait_list)):
+                for _ in range(len(self.course_trait_list)):
                     line = next(f)
                     self.intensity_lolol[-1].append(
                         [float(v) if v != '-' else None for v in line.strip().split('\t')]

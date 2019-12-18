@@ -3,7 +3,7 @@ import os
 from scipy.optimize import minimize, curve_fit
 import numpy as np
 import matplotlib.pyplot as plt
-import misc
+from champ import misc
 import itertools
 from champ import seqtools
 
@@ -171,8 +171,11 @@ class KdFitIA(object):
         res = minimize(neg_log_L, x0=x0, method='powell', options=dict(maxiter=1000000,
                                                                        maxfev=1000000,
                                                                        disp=True))
+        # TODO - Verify the below isn't needed
+        """ 
         if not res.success:
-            print '\nWarning: Failure on {} ({})'.format(seq, seqtools.mm_names(self.target, seq))
+            print("\nWarning: Failure on {} ({})").format(seq, seqtools.mm_names(self.target, seq)
+        """
         params = map(abs, res.x)
         Kds = params[:idx1]
         Imax_list = params[idx1:idx2]
@@ -217,7 +220,7 @@ class KdFitIA(object):
         res = minimize(neg_log_L, x0=20, method='powell', options=dict(maxiter=1000000,
                                                                        maxfev=1000000))
         if not res.success:
-            print '\nWarning: Failure on {} ({})'.format(seq, seqtools.mm_names(self.target, seq))
+            print("\nWarning: Failure on {} ({})").format(seq, seqtools.mm_names(self.target, seq))
         return float(res.x)
 
     def curve_fit_Kd(self, seq, Imin, Imax, max_clust=None, bootstrap=False, *args, **kw_args):
@@ -270,9 +273,9 @@ class KdFitIA(object):
         self.ABAs = {name_tup: [] for name_tup in self.fit_func_given_Imin_max_names.keys()}
         self.ABA_errors = {name_tup: [] for name_tup in self.fit_func_given_Imin_max_names.keys()}
         dot_val = 100
-        print '{} Seqs, \'.\'={}\n'.format(self.IA.nseqs, dot_val)
+        print("{} Seqs, '.'={}\n").format(self.IA.nseqs, dot_val)
         for names_tup, (Imin, Imax) in sorted(self.Imin_max_pairs_given_names.items()):
-            print '\n', names_tup
+            print("\n {names_tup}")
             Imin_name = names_tup[0]
             fit_func = self.fit_func_given_Imin_max_names[names_tup]
             neg_control_Kd = fit_func(self.neg_control_target,
@@ -396,7 +399,7 @@ class KdFitIA(object):
     def all_error_analysis_and_figs(self, *args, **kw_args):
         self.setup_for_fit()
         for names_tup in self.Imin_max_pairs_given_names.keys():
-            print names_tup
+            print(F"names_tup: {names_tup}")
             sys.stdout.flush()
             self.error_analysis_and_figs(names_tup, *args, **kw_args)
 
